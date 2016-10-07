@@ -13,10 +13,12 @@
 
 (reg-event-db :create-block
               (fn [db [_ [x y]]]
-                (update db :blocks
-                        assoc [(g/px->x x)
-                               (g/px->y y)]
-                        (:selected-color db))))
+                (if (< (:selected-color db) 5)
+                  (update db :blocks
+                          assoc [(g/px->x x)
+                                 (g/px->y y)]
+                          (:selected-color db))
+                  db)))
 
 (reg-event-db :update-block
               (fn [db [_ coords]]

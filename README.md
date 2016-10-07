@@ -52,3 +52,9 @@ To compile clojurescript to javascript:
 lein clean
 lein cljsbuild once min
 ```
+
+## License
+
+Copyright &copy; Arne Brasseur 2016
+
+Distributed under the Mozilla Public License 2.0.
