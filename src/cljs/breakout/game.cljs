@@ -20,9 +20,8 @@
 (defn color-class [col-idx]
   (get block-colors col-idx))
 
-(defn block-attrs [x y color]
-  {:x (+ block-margin (* x (+ block-width block-margin)))
-   :y (+ block-margin (* y (+ block-height block-margin)))
-   :width block-width
-   :height block-height
-   :class (color-class color)})
+(defn x->px [x]
+  (+ block-margin (* x (+ block-width block-margin))))
+
+(defn y->px [y]
+  (+ block-margin (* y (+ block-height block-margin))))
