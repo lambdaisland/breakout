@@ -4,17 +4,21 @@ body {
 }
 
 #app {
-  width: 1010px;
   margin: 0 auto;
+  width: 1010px;
 }
 
 h1 {
-  color: #2222200;
   font-size: 3rem;
-  margin-top: 0;
-  text-shadow: 3px 3px #ddd;
-  margin-bottom: -20px;
   font-family: Baloo Da, Impact, sans-serif;
+  margin-top: 0;
+  margin-bottom: -20px;
+  color: #2222200;
+  text-shadow: 3px 3px #ddd;
+}
+
+pre {
+  background-color: #ffffee;
 }
 
 .fill--black {

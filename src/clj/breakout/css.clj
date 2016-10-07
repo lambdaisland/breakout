@@ -16,6 +16,8 @@
          :color "#2222200"
          :text-shadow "3px 3px #ddd"}]
 
+   [:pre {:background-color "#ffffee"}]
+
    [:.fill--black {:fill "#222200"}]
    [:.fill--gray1 {:fill "#444444"}]
    [:.fill--gray2 {:fill "#888888"}]

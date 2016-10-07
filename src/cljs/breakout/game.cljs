@@ -25,3 +25,9 @@
 
 (defn y->px [y]
   (+ block-margin (* y (+ block-height block-margin))))
+
+(defn px->x [px]
+  (int (/ (- px (/ block-margin 2)) (+ block-width block-margin))))
+
+(defn px->y [py]
+  (int (/ (- py (/ block-margin 2)) (+ block-height block-margin))))
