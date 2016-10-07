@@ -1,6 +1,10 @@
-# breakout
+# Breakout
 
-A [re-frame](https://github.com/Day8/re-frame) application designed to ... well, that part is up to you.
+The classic game Breakout, implemented in ClojureScript using re-frame.
+
+Currently only the level editor is implemented.
+
+As seen on [Lambda Island](https://lambdaisland.com).
 
 ## Development Mode
 
