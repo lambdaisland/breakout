@@ -6,6 +6,10 @@ Currently only the level editor is implemented.
 
 As seen on [Lambda Island](https://lambdaisland.com).
 
+You can try [the demo](https://lambdaisland.github.io/breakout/) on-line
+
+[![](screenshot.png)](https://lambdaisland.github.io/breakout/)
+
 ## Development Mode
 
 ### Start Cider from Emacs:
