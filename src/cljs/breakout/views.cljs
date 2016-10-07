@@ -1,41 +1,33 @@
 (ns breakout.views
     (:require [re-frame.core :as re-frame]
-              [breakout.helpers :refer [background-box translate]]
+              [breakout.views.helpers :refer [background-box translate]]
+              [breakout.views.swatches :refer [color-swatch selection-marker]]
               [breakout.game :as g]))
 
-(defn color-swatch [index]
-  (let [size g/swatch-size
-        margin g/swatch-margin]
-    [:rect {:class (g/color-class index)
-            :x margin
-            :y (+ margin (* index (+ margin size)))
-            :width size
-            :height size}]))
-
-(defn selection-marker [index]
-  (let [size g/swatch-size
-        margin g/swatch-margin]
-    [:rect {:x (- margin 3)
-            :y (+ margin (* index (+ margin size)) -3)
-            :width (+ size 6)
-            :height (+ size 6)
-            :stroke "white"
-            :stroke-width 3
-            :fill-opacity "0"}]))
-
-(defn color-selector []
+(defn color-picker []
   [:g
    [background-box 0 0 60 310]
-   (for [idx (range (count g/block-colors))]
-     [color-swatch idx])
-   [selection-marker 0]])
+   (for [idx (range 5)]
+     [color-swatch {:index idx
+                    :key (str "color-" idx)}])
+   [selection-marker {:index 0
+                      :key "marker"}]])
 
-(defn block [[x y color]]
-  [:rect (g/block-attrs x y color)])
+(defn block [{:keys [x y color]}]
+  [:rect {:x (g/x->px x)
+          :y (g/y->px y)
+          :width g/block-width
+          :height g/block-height
+          :class (g/color-class color)}])
 
 (defn blocks []
   (let [blocks [[3 5 0] [2 8 1] [1 1 4]]]
-    [:g (map block blocks)]))
+    [:g
+     (for [[x y color] blocks]
+       [block {:x x
+               :y y
+               :color color
+               :key (str x "--" y)}])]))
 
 (defn main-panel []
   [:div.game
@@ -44,4 +36,4 @@
     [background-box 0 0 g/width g/height]
     [blocks]
     [translate {:x 1009 :y 0}
-     [color-selector]]]])
+     [color-picker]]]])
