@@ -9,6 +9,8 @@
    [:#app {:margin "0 auto"
            :width "1010px"}]
 
+   [:svg {:margin-left "-25px"}]
+
    [:h1 {:font-size "3rem"
          :font-family "Baloo Da, Impact, sans-serif"
          :margin-top "0"

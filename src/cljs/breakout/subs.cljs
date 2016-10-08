@@ -1,8 +1,15 @@
 (ns breakout.subs
     (:require-macros [reagent.ratom :refer [reaction]])
-    (:require [re-frame.core :as re-frame]))
+    (:require [re-frame.core :as re-frame :refer [reg-sub]]))
 
-(re-frame/reg-sub
- :name
+(reg-sub
+ :color
  (fn [db]
-   (:name db)))
+   (:color db)))
+
+(reg-sub
+ :blocks
+ (fn [db]
+   (map (fn [[[col row] color]]
+          [col row color])
+        (:blocks db))))

@@ -10,8 +10,7 @@
    (for [idx (range 6)]
      [color-swatch {:index idx
                     :key (str "color-" idx)}])
-   [selection-marker {:index 0
-                      :key "marker"}]])
+   [selection-marker {:index 0}]])
 
 (defn block [{:keys [row column color]}]
   [:rect {:x (g/col->px column)
