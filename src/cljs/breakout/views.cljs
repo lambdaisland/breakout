@@ -5,12 +5,15 @@
             [breakout.game :as g]))
 
 (defn color-picker []
-  [:g
-   [background-box {:x 0 :y 0 :width 60 :height 310}]
-   (for [idx (range 6)]
-     [color-swatch {:index idx
-                    :key (str "color-" idx)}])
-   [selection-marker {:index 0}]])
+  (let [color-idx (subscribe [:color])]
+    (fn []
+      [:g
+       [background-box {:x 0 :y 0 :width 60 :height 310}]
+       (for [idx (range 6)]
+         [color-swatch {:index idx
+                        :on-click #(dispatch [:select-color idx])
+                        :key (str "color-" idx)}])
+       [selection-marker {:index @color-idx}]])))
 
 (defn block [{:keys [row column color]}]
   [:rect {:x (g/col->px column)
@@ -20,13 +23,14 @@
           :class (g/color-class color)}])
 
 (defn blocks []
-  (let [blocks [[3 5 0] [2 8 1] [1 1 4]]]
-    [:g
-     (for [[column row color] blocks]
-       [block {:row row
-               :column column
-               :color color
-               :key (str row "--" column)}])]))
+  (let [blocks (subscribe [:blocks])]
+    (fn []
+      [:g
+       (for [[column row color] @blocks]
+         [block {:row row
+                 :column column
+                 :color color
+                 :key (str row "--" column)}])])))
 
 (defn main-panel []
   [:div.game
