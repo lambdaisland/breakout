@@ -1,6 +1,6 @@
 (ns breakout.views
-  (:require [re-frame.core :as re-frame]
-            [breakout.views.helpers :refer [background-box translate]]
+  (:require [re-frame.core :as re-frame :refer [subscribe dispatch]]
+            [breakout.views.helpers :as helpers :refer [background-box translate]]
             [breakout.views.swatches :refer [color-swatch selection-marker]]
             [breakout.game :as g]))
 
@@ -36,7 +36,13 @@
   [:div.game
    [:h1 "BREAKOUT LEVEL EDITOR"]
    [:svg {:style {:width (+ g/width 70) :height g/height}}
-    [background-box {:x 0 :y 0 :width g/width :height g/height}]
+    [background-box {:x 0
+                     :y 0
+                     :width g/width
+                     :height g/height
+                     :on-click #(dispatch [:create-block (helpers/click-pos %)])}]
     [blocks]
     [translate {:x 1009 :y 0}
-     [color-picker]]]])
+     [color-picker]]
+    ]
+   [:pre (pr-str @re-frame.db/app-db)]])
