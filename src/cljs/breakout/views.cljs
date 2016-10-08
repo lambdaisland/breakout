@@ -20,7 +20,8 @@
           :y (g/row->px row)
           :width g/block-width
           :height g/block-height
-          :class (g/color-class color)}])
+          :class (g/color-class color)
+          :on-click #(dispatch [:block-clicked column row])}])
 
 (defn blocks []
   (let [blocks (subscribe [:blocks])]
@@ -45,4 +46,4 @@
     [translate {:x 1009 :y 0}
      [color-picker]]
     ]
-   [:pre (pr-str @re-frame.db/app-db)]])
+   #_[:pre (pr-str @re-frame.db/app-db)]])
