@@ -13,9 +13,9 @@
    [selection-marker {:index 0
                       :key "marker"}]])
 
-(defn block [{:keys [x y color]}]
-  [:rect {:x (g/col->px x)
-          :y (g/row->px y)
+(defn block [{:keys [row column color]}]
+  [:rect {:x (g/col->px column)
+          :y (g/row->px row)
           :width g/block-width
           :height g/block-height
           :class (g/color-class color)}])
@@ -23,11 +23,11 @@
 (defn blocks []
   (let [blocks [[3 5 0] [2 8 1] [1 1 4]]]
     [:g
-     (for [[x y color] blocks]
-       [block {:x x
-               :y y
+     (for [[column row color] blocks]
+       [block {:row row
+               :column column
                :color color
-               :key (str x "--" y)}])]))
+               :key (str row "--" column)}])]))
 
 (defn main-panel []
   [:div.game
