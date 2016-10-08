@@ -24,15 +24,22 @@
           :class (g/color-class color)
           :on-click #(dispatch [:block-clicked x y])}])
 
+(defn block-row [{:keys [x blocks]}]
+  [:g
+   (for [[y color] blocks]
+     [block {:x x
+             :y y
+             :color color
+             :key (str x "--" y)}])])
+
 (defn blocks []
   (let [blocks (subscribe [:blocks])]
     (fn []
       [:g
-       (for [[x y color] @blocks]
-         [block {:x x
-                 :y y
-                 :color color
-                 :key (str x "--" y)}])])))
+       (for [[x row] @blocks]
+         [block-row {:x x
+                     :blocks row
+                     :key (str "row-" x)}])])))
 
 (defn main-panel []
   [:div.game

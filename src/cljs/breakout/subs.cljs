@@ -7,6 +7,4 @@
 
 (reg-sub :blocks
          (fn [db _]
-           (map (fn [[[x y] color]]
-                  [x y color])
-                (:blocks db))))
+           (:blocks db)))

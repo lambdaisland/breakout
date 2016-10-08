@@ -15,18 +15,18 @@
               (fn [db [_ [x y]]]
                 (if (< (:selected-color db) 5)
                   (update db :blocks
-                          assoc [(g/px->x x)
-                                 (g/px->y y)]
+                          assoc-in [(g/px->x x)
+                                    (g/px->y y)]
                           (:selected-color db))
                   db)))
 
 (reg-event-db :update-block
               (fn [db [_ coords]]
-                (update db :blocks assoc coords (:selected-color db))))
+                (update db :blocks assoc-in coords (:selected-color db))))
 
 (reg-event-db :remove-block
-              (fn [db [_ coords]]
-                (update db :blocks dissoc coords)))
+              (fn [db [_ [x y]]]
+                (update-in db [:blocks x] dissoc y)))
 
 (reg-event-fx :block-clicked
               (fn [cofx [_ x y]]
