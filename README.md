@@ -1,6 +1,21 @@
 # breakout
 
-A [re-frame](https://github.com/Day8/re-frame) application designed to ... well, that part is up to you.
+A level editor for the retro game "Breakout", built with
+[re-frame](https://github.com/Day8/re-frame) , as seen on
+[Lambda Island episode 19](https://lambdaisland.com/episodes/re-frame).
+
+You can [try it out on-line](https://lambdaisland.github.io/breakout/).
+
+If you want to follow along, then check out the
+[re-frame-start](https://github.com/lambdaisland/breakout/tree/re-frame-start)
+branch, and start from there. The final result is in the
+[re-frame-episode-1](https://github.com/lambdaisland/breakout/tree/re-frame-episode-1) branch.
+
+```
+git clone https://github.com/lambdaisland/breakout.git
+cd breakout
+git checkout re-frame-start
+```
 
 ## Development Mode
 
